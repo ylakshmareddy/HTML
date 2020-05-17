@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			function validate()
+			{
+				if(checkbox.checked == 1)
+				{
+					if(typeof(Storage) != undefined)
+					{
+						localStorage.setItem("username", $("#username").val());
+						localStorage.setItem("password", $("#password").val());
+					}
+					else
+					{
+						alert("Sorry, your browser does not support Web Storage...");
+					}
+					checkbox.checked = 0;
+				}
+				$("#username").val('');
+				$("#password").val('');
+
+
+			}
+			function initialize()
+			{
+				if(localStorage.username && localStorage.password)
+				{
+					$("#username").val(localStorage.getItem("username"));
+					$("#password").val(localStorage.getItem("password"));
+				}
+			}
+		</script>
+	</head>
+	<body onload = "initialize()">
+		<table>
+			<tr>
+				<td>User Name: </td>
+				<td>
+					<input type="text" id="username">
+				</td>
+			</tr>
+			<tr>
+				<td>Password: </td>
+				<td>
+					<input type="text" id="password">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label><input type="checkbox" id="checkbox">Save login details</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button onclick = "validate()">Submit</button>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

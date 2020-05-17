@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			function validate()
+			{
+				if(checkbox.checked == 1)
+				{
+					checkbox.checked = 0;
+					var d = new Date();
+					d.setTime(d.getTime() + (1*24*60*60*1000));
+					var expires = "expires="+ d.toUTCString();
+					document.cookie = "username=" + $("#username").val() + ";" +expires + ";";
+					document.cookie = "password=" + $("#password").val() + ";" +expires + ";";
+				}
+				$("#username").val('');
+				$("#password").val('');
+			}
+			var username, password
+			function initialize()
+			{
+				if(document.cookie.length != 0)
+				{
+					var keyValueArray = document.cookie.split(";")
+					var userNameKeyValuePair = keyValueArray[0].split("=");
+					var passwordKeyValuePair = keyValueArray[1].split("=");
+			
+					$("#username").val(userNameKeyValuePair[1]);
+					$("#password").val(passwordKeyValuePair[1]);
+				}
+			}
+		</script>
+	</head>
+	<body onload="initialize()">
+		<table>
+			<tr>
+				<td>User name: </td>
+				<td>
+					<input type="text" id="username">
+				</td>
+			</tr>
+			<tr>
+				<td>Password: </td>
+				<td>
+					<input type="text" id="password">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label><input type="checkbox" id="checkbox">Save username</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button onclick = "validate()">Submit</button>
+				</td>
+			</tr>
+		</table>
+
+	</body>
+</html>

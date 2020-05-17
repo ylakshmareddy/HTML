@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			function getItemId()
+			{
+				$("#IdOfItem").submit();
+			}
+		</script>
+	</head>
+	<body>
+		<center>
+			<form id="IdOfItem" action="ItemId.php" method="get">
+				<p>ItemId:</p>
+				<input type="text" name="ItemId" id="ItemId"><br><br>
+				<button onclick="getItemId()">Submit</button>
+			</form>
+		</center>
+	</body>
+</html>
